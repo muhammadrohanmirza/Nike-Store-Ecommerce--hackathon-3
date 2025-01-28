@@ -24,12 +24,6 @@ export default function Header() {
      <Image src={logo1} alt="logo" className="w-6 sm:w-8" /> 
     </div>
    
-    {/* <div className="hidden sm:flex w-[200px] h-8 bg-white justify-center items-center xl:ml-[20%] lg:ml-[10%] sm:ml-[10%]">
-      <p className="text-black text-sm sm:text-base font-medium">
-        Skip to main content
-      </p>
-    </div> */}
-   
     <nav className="text-xs sm:text-sm lg:text-base space-x-2 sm:space-x-4 text-black font-medium flex items-center">
       <Link href="/Find" className="hover:underline">
         Find a Store
@@ -100,14 +94,27 @@ export default function Header() {
 
       {/* Mobile Navigation (Initially Hidden, toggled via useState) */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white p-4 space-y-4">
-          <Link href={'/Products'} className="text-gray-700  block">New & Featured</Link>
-          <Link href={'/Products'} className="text-gray-700  block">Men</Link>
-          <Link href={'/Products'} className="text-gray-700  block">Women</Link>
-          <Link href={'/Products'} className="text-gray-700  block">Kids</Link>
-          <Link href={'/Products'} className="text-gray-700  block">Sale</Link>
-          <Link href={'/Products'} className="text-gray-700  block">SNKRS</Link>
+        <div className="lg:hidden bg-white space-y-2">
+          <div className="justify-between text-center space-y-2">
+          <Link href={'/Products'} className="text-black hover:text-blue-500  block">New & Featured</Link>
+          <Link href={'/Products'} className="text-black hover:text-blue-500 block">Men</Link>
+          <Link href={'/Products'} className="text-black hover:text-blue-500  block">Women</Link>
+          <Link href={'/Products'} className="text-black hover:text-blue-500  block">Kids</Link>
+          <Link href={'/Products'} className="text-black hover:text-blue-500 block">Sale</Link>
+          <Link href={'/Products'} className="text-black hover:text-blue-500  block">SNKRS</Link>
+          </div>
+          <div className="flex items-center justify-center space-x-4">
+          <button className=" block text-gray-700 hover:text-red-600">
+          <FaRegHeart className='cursor-pointer w-[25px] h-[25px]' />
+          </button>
+          <Link href={'/Cart'}>
+          <button className="block text-gray-700 hover:text-black">
+          <IoBagHandleOutline className='cursor-pointer w-[25px] h-[25px]' />
+          </button>
+          </Link>
+          </div>
         </div>
+        
       )}
     </header>
     </div>

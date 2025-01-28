@@ -1,6 +1,6 @@
+'use client'
 import Image from "next/image"
 import up from "../../../Assets/up.png";
-import check from "../../../Assets/check.png";
 
 export default function SideBar(){
     return(
@@ -11,8 +11,7 @@ export default function SideBar(){
             <li>Sports Bra</li>
             <li>Tops & Tshirts</li>
             <li>
-              Hoodies <br />
-              & Sweatshirts
+              Hoodies & Sweatshirts
             </li>
             <li>Jackets</li>
             <li>Trouser & Tights</li>
@@ -21,9 +20,8 @@ export default function SideBar(){
             <li>Jumpsuits & Rompers</li>
             <li>Skirts & Dresses</li>
             <li>Socks</li>
-            <li className="mb-5">
-              Accessories <br />
-              & Equipment
+            <li>
+              Accessories & Equipment
             </li>
           </ul>
 
@@ -34,11 +32,11 @@ export default function SideBar(){
             <Image src={up} alt="up" className="w-4 h-4" />
           </div>
           <div className="flex gap-1 ml-8 mt-4">
-            <Image src={check} alt="" className="w-4 h-4" />
+          <input type="checkbox"/>
             <p className="text-[12px]">Men</p>
           </div>
           <div className="flex gap-1 ml-8 mt-2">
-            <Image src={check} alt="" className="w-4 h-4" />
+          <input type="checkbox"/>
             <p className="text-[12px]">Women</p>
           </div>
 
@@ -49,11 +47,11 @@ export default function SideBar(){
             <Image src={up} alt="up" className="w-4 h-4" />
           </div>
           <div className="flex gap-1 ml-8 mt-4">
-            <Image src={check} alt="" className="w-4 h-4" />
+          <input type="checkbox"/>
             <p className="text-[12px]">Boys</p>
           </div>
           <div className="flex gap-1 ml-8 mt-2">
-            <Image src={check} alt="" className="w-4 h-4" />
+          <input type="checkbox"/>
             <p className="text-[12px]">Girls</p>
           </div>
 
@@ -64,11 +62,11 @@ export default function SideBar(){
             <Image src={up} alt="up" className="w-4 h-4" />
           </div>
           <div className="flex gap-1 ml-8 mt-4">
-            <Image src={check} alt="" className="w-4 h-4" />
+          <input type="checkbox"/>
             <p className="text-[12px]">Under Rs 2500.00</p>
           </div>
           <div className="flex gap-1 ml-8 mt-2">
-            <Image src={check} alt="" className="w-4 h-4" />
+          <input type="checkbox"/>
             <p className="text-[12px]">Rs 2501.00 - Rs 10000</p>
           </div>
         </div>
