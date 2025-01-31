@@ -6,6 +6,9 @@ import { urlFor } from '@/sanity/lib/image';
 import { Product } from '../../../types/products';
 import { useEffect, useState } from "react";
 import { getCartItems } from "../actions/actions";
+// import order from "@/sanity/schemaTypes/order";
+import { client } from "@/sanity/lib/client";
+import Swal from "sweetalert2";
 
 
 export default function Checkout() {
@@ -20,9 +23,9 @@ const [formValue, setFormValue] = useState({
   zipcode: '',
   phonenumber: '',
   email: '',
-  cardnumber: '',
-  expirydate: '',
-  cvv: ''
+  // cardnumber: '',
+  // expirydate: '',
+  // cvv: ''
 
 });
 const [formError, setFormError] = useState({
@@ -33,9 +36,9 @@ const [formError, setFormError] = useState({
   zipcode: false,
   phonenumber: false,
   email: false,
-  cardnumber: false,
-  expirydate: false,
-  cvv: false
+  // cardnumber: false,
+  // expirydate: false,
+  // cvv: false
   
 });
 
@@ -66,9 +69,9 @@ useEffect(() => {
         zipcode: !formValue.zipcode,
         phonenumber: !formValue.phonenumber,
         email: !formValue.email,
-        cardnumber: !formValue.cardnumber,
-        expirydate: !formValue.expirydate,
-        cvv: !formValue.cvv
+        // cardnumber: !formValue.cardnumber,
+        // expirydate: !formValue.expirydate,
+        // cvv: !formValue.cvv
       };
       
       setFormError(error);
@@ -76,14 +79,66 @@ useEffect(() => {
       }
 
 
-    const handlePlaceOrder = () => {
-        if (validateForm()) {
-          // Place order logic here
-          // setIsConfirmed(true);
-          // Clear cart after placing order
-          localStorage.removeItem('appliedDiscount');
+    const handlePlaceOrder = async () => {
+        // if (validateForm()) {
+        //   // Place order logic here
+        //   // setIsConfirmed(true);
+        //   // Clear cart after placing order
+        //   localStorage.removeItem('appliedDiscount');
+        // }
+
+        Swal.fire({
+          title: 'Processing your order....',
+          text: 'Please wait a moment.',
+          icon: 'info',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Process',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            if (validateForm()) {
+              localStorage.removeItem('appliedDiscount');
+              Swal.fire(
+                'Success!',
+                'Your order has been successfully processed!',
+                'success'
+              );
+              
+            } else {
+            Swal.fire(
+              'Error!',
+              'Please fill in all the fields before proceeding.',
+              'error'
+            );
+          }
         }
-      };
+        });
+
+        const orderData = {
+          _type: 'order',
+          firstName: formValue.firstname,
+          lastName: formValue.lastname,
+          address: formValue.address,
+          city: formValue.city,
+          zipcode: formValue.zipcode,
+          phone: formValue.phonenumber,
+          email: formValue.email,
+          cartitems: cartItems.map(items => ({
+            _type: 'reference',
+            _ref : items._id,
+          })),
+          total : subtotal,
+          discount : discount,
+          orderDate : new Date().toISOString()
+        };
+      try {
+      await client.create(orderData)
+      localStorage.removeItem('applyDiscount');
+      } catch (error) {
+      console.error('error creating order', error)
+      }
+    };
     
 
   return (
@@ -210,7 +265,7 @@ useEffect(() => {
               </div>
             </div>
 
-            <div className="relative">
+            {/* <div className="relative">
             <h1 className="text-[16px] font-medium mt-2 mb-2">
              Payment Information:
             </h1>
@@ -259,7 +314,7 @@ useEffect(() => {
                   </p>
                 )}
               </div>
-              </div>
+              </div> */}
 
 
           </div>
