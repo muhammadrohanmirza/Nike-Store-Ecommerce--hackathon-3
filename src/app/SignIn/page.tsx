@@ -1,13 +1,13 @@
 import Image from "next/image"
 import logo from "../../../Assets/logo2.png"
-import { SignedIn, SignedOut, SignInButton, SignOutButton, UserButton } from "@clerk/nextjs"
+
 
 export default function SignIn(){
     return(
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
           
         <div className="max-w-md w-full space-y-8 bg-white p-6 rounded-md shadow-md">
-        <UserButton/>
+       
           <div className="text-center">
             <Image
               className="mx-auto h-12 w-auto"
@@ -17,9 +17,9 @@ export default function SignIn(){
             <h2 className="mt-6 text-center text-2xl font-extrabold text-gray-900">
               YOUR ACCOUNT FOR EVERYTHING NIKE
             </h2>
-            <SignedIn>
+            
           <p>Use coupon <span className=" font-bold">SAVE10</span> to get a  discount on your order</p>
-          </SignedIn>
+         
           </div>
   
           <form className="mt-8 space-y-6">
@@ -72,12 +72,9 @@ export default function SignIn(){
             </div>
   
             <div className="group relative w-full cursor-pointer flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black" >
-              <SignedOut>
-                <p className="cursor-pointer"><SignInButton mode="modal"/> / Join Us</p>
-              </SignedOut>
-              <SignedIn>
-                <SignOutButton/>
-              </SignedIn>
+         
+                <p className="cursor-pointer"> / Join Us</p>
+             
             </div>
   
             <div className="text-center mt-6 text-sm text-gray-600">
