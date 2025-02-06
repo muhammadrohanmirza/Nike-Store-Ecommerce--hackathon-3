@@ -1,11 +1,13 @@
 import Image from "next/image"
 import logo from "../../../Assets/logo2.png"
-// import tick from "../../../Assets/tick.png"
-// import Link from "next/link"
+import { SignedIn, SignedOut, SignInButton, SignOutButton, UserButton } from "@clerk/nextjs"
+
 export default function SignIn(){
     return(
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
+          
         <div className="max-w-md w-full space-y-8 bg-white p-6 rounded-md shadow-md">
+        <UserButton/>
           <div className="text-center">
             <Image
               className="mx-auto h-12 w-auto"
@@ -15,6 +17,9 @@ export default function SignIn(){
             <h2 className="mt-6 text-center text-2xl font-extrabold text-gray-900">
               YOUR ACCOUNT FOR EVERYTHING NIKE
             </h2>
+            <SignedIn>
+          <p>Use coupon <span className=" font-bold">SAVE10</span> to get a  discount on your order</p>
+          </SignedIn>
           </div>
   
           <form className="mt-8 space-y-6">
@@ -27,7 +32,6 @@ export default function SignIn(){
                   id="email"
                   name="email"
                   type="email"
-                  required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-black focus:border-black focus:z-10 sm:text-sm"
                   placeholder="Email address"
                 />
@@ -40,14 +44,14 @@ export default function SignIn(){
                   id="password"
                   name="password"
                   type="password"
-                  required
+               
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-black focus:border-black focus:z-10 sm:text-sm"
                   placeholder="Password"
                 />
               </div>
             </div>
   
-            <div className="flex items-center justify-between">
+            <div className=" grid grid-cols-1 sm:grid-cols-2 items-center justify-between">
               <div className="flex items-center">
                 <input
                   id="remember_me"
@@ -67,13 +71,13 @@ export default function SignIn(){
               </div>
             </div>
   
-            <div>
-              <button
-                type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
-              >
-                SIGN IN
-              </button>
+            <div className="group relative w-full cursor-pointer flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black" >
+              <SignedOut>
+                <p className="cursor-pointer"><SignInButton mode="modal"/> / Join Us</p>
+              </SignedOut>
+              <SignedIn>
+                <SignOutButton/>
+              </SignedIn>
             </div>
   
             <div className="text-center mt-6 text-sm text-gray-600">

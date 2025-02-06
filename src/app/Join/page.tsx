@@ -2,12 +2,17 @@ import Image from "next/image"
 import logo from "../../../Assets/logo2.png"
 // import box from "../../../Assets/box.png"
 import Link from "next/link"
+import { SignedIn, SignedOut, SignInButton, SignOutButton, UserButton } from "@clerk/nextjs"
 
 
 export default function Join() {
     return (
         <div className="min-h-screen pt-20 pb-20 flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full space-y-8 bg-white p-6 rounded-md shadow-md">
+        
+          <UserButton/>
+          
+      
         <div className="text-center">
           <Image
             className="mx-auto h-12 w-auto"
@@ -17,6 +22,9 @@ export default function Join() {
           <h2 className="mt-6 text-center text-2xl font-extrabold text-gray-900">
             BECOME A NIKE MEMBER
           </h2>
+          <SignedIn>
+          <p>Use coupon <span className=" font-bold">SAVE10</span> to get a  discount on your order</p>
+          </SignedIn>
           <p className="mt-2 text-center text-sm text-gray-600">
             Create your Nike Member profile and get first access to the very best of Nike products, inspiration, and community.
           </p>
@@ -32,7 +40,7 @@ export default function Join() {
                 id="email"
                 name="email"
                 type="email"
-                required
+             
                 className="appearance-none block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-black focus:border-black sm:text-sm"
                 placeholder="Email address"
               />
@@ -45,7 +53,7 @@ export default function Join() {
                 id="password"
                 name="password"
                 type="password"
-                required
+              
                 className="appearance-none block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-black focus:border-black sm:text-sm"
                 placeholder="Password"
               />
@@ -58,7 +66,7 @@ export default function Join() {
                 id="first-name"
                 name="first-name"
                 type="text"
-                required
+             
                 className="appearance-none block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-black focus:border-black sm:text-sm"
                 placeholder="First Name"
               />
@@ -71,7 +79,7 @@ export default function Join() {
                 id="last-name"
                 name="last-name"
                 type="text"
-                required
+             
                 className="appearance-none block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-black focus:border-black sm:text-sm"
                 placeholder="Last Name"
               />
@@ -84,7 +92,7 @@ export default function Join() {
                 id="dob"
                 name="dob"
                 type="date"
-                required
+              
                 className="appearance-none block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-black focus:border-black sm:text-sm"
                 placeholder="Date of Birth"
               />
@@ -100,7 +108,7 @@ export default function Join() {
                 id="country"
                 name="pakistan"
                 type="text"
-                required
+             
                 className="appearance-none block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-black focus:border-black sm:text-sm"
                 placeholder="Country"
               />
@@ -144,14 +152,14 @@ export default function Join() {
             </div>
           </div>
 
-          <div>
-            <button
-              type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
-            >
-              JOIN US
-            </button>
-          </div>
+          <div className="group relative w-full cursor-pointer flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black" >
+              <SignedOut>
+                <p className="cursor-pointer"><SignInButton mode="modal"/> / Join Us</p>
+              </SignedOut>
+              <SignedIn>
+                <SignOutButton/>
+              </SignedIn>
+            </div>
 
           <div className="text-center mt-4">
             <p className="text-sm text-gray-900">
@@ -159,6 +167,7 @@ export default function Join() {
               <Link href="/SignIn" className="text-black font-medium hover:underline">
                 Sign In.
               </Link>
+           
             </p>
           </div>
         </form>
