@@ -5,12 +5,13 @@ import Link from "next/link"
 
 
 
+
 export default function Join() {
     return (
         <div className="min-h-screen pt-20 pb-20 flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full space-y-8 bg-white p-6 rounded-md shadow-md">
         
-      
+
           
       
         <div className="text-center">
@@ -22,9 +23,9 @@ export default function Join() {
           <h2 className="mt-6 text-center text-2xl font-extrabold text-gray-900">
             BECOME A NIKE MEMBER
           </h2>
-         
-          <p>Use coupon <span className=" font-bold">SAVE10</span> to get a  discount on your order</p>
-         
+        
+          <p>Use coupon <span  className=" font-bold">SAVE10</span> to get a  discount on your order</p>
+       
           <p className="mt-2 text-center text-sm text-gray-600">
             Create your Nike Member profile and get first access to the very best of Nike products, inspiration, and community.
           </p>
@@ -153,9 +154,9 @@ export default function Join() {
           </div>
 
           <div className="group relative w-full cursor-pointer flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black" >
-             
-                <p className="cursor-pointer"> / Join Us</p>
-             
+         
+                <p className="cursor-pointer">  / Join Us</p>
+        
             </div>
 
           <div className="text-center mt-4">

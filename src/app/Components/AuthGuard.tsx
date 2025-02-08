@@ -1,24 +1,24 @@
-import { useUser } from "@clerk/nextjs"
-import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+// import { useUser } from "@clerk/nextjs"
+// import { useRouter } from "next/navigation"
+// import { useEffect, useState } from "react"
 
 
-const AuthGuard = ({children}: {children: React.ReactNode})=>{
-    const [isloading , setIsloading] = useState(true)
-const {isSignedIn}= useUser()
-const router = useRouter()
+// const AuthGuard = ({children}: {children: React.ReactNode})=>{
+//     const [isloading , setIsloading] = useState(true)
+// const {isSignedIn}= useUser()
+// const router = useRouter()
 
-useEffect(()=>{
-    if (isSignedIn === false){
-        router.replace('Join')
-    }else{
-        setIsloading(false)
-    }
-},[isSignedIn, router])
+// useEffect(()=>{
+//     if (isSignedIn === false){
+//         router.replace('Join')
+//     }else{
+//         setIsloading(false)
+//     }
+// },[isSignedIn, router])
 
-if (isloading) return <p className="text-3xl">Loading....</p>
+// if (isloading) return <p className="text-3xl">Loading....</p>
 
-return<>{children}</>
-}
+// return<>{children}</>
+// }
 
-export default AuthGuard
+// export default AuthGuard
