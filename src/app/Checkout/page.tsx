@@ -9,6 +9,7 @@ import { Product } from '../../../types/products';
 import { getCartItems } from "../actions/actions";
 import { client } from "@/sanity/lib/client";
 import Swal from "sweetalert2";
+import AuthGuard from "../Components/AuthGuard";
 
 export default function Checkout() {
   const [cartItems, setCartItems] = useState<Product[]>([]);
@@ -147,7 +148,7 @@ export default function Checkout() {
 
   return (
     
- 
+ <AuthGuard>
     <div className="p-4 bg-slate-50 min-h-screen py-10">
       {/* <form onSubmit={}> */}
         <div className="flex flex-col lg:flex-row lg:justify-between lg:gap-8 mx-auto max-w-7xl">
@@ -365,6 +366,7 @@ export default function Checkout() {
                 value={couponCode}
                 onChange={(e) => setCouponCode(e.target.value)}
               />
+              <p className="text-[12px]"> Apply Coupon Code to Get 10% Discount</p>
             </div>
             {couponError && (
               <p className="text-sm text-red-500 mt-1">Invalid coupon code. Please try again.</p>
@@ -418,7 +420,7 @@ export default function Checkout() {
        
       {/* </form> */}
     </div>
-   
+    </AuthGuard>
   );
 }
 

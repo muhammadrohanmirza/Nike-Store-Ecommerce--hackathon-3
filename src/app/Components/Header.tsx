@@ -8,6 +8,7 @@ import { IoBagHandleOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import { RiMenu3Line } from "react-icons/ri";
 import Link from "next/link";
+import { UserButton } from "@clerk/nextjs";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +17,7 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
   return (
-    <div className="">
+    <div className=" sticky z-30 top-0 w-full">
 
   <div className="bg-[#F5F5F5] flex items-center justify-between px-4 sm:px-6 lg:px-10 h-12 ">
 
@@ -79,10 +80,11 @@ export default function Header() {
           </button>
           </Link>
           <Link href={'/Cart'}>
-          <button className=" text-gray-700 hover:text-black">
+          <button className=" text-black hover:text-gray-700">
           <IoBagHandleOutline className='cursor-pointer w-[25px] h-[25px]' />
           </button>
           </Link>
+          <UserButton/>
         </div>
 
         {/* Mobile Menu Button */}
@@ -96,7 +98,7 @@ export default function Header() {
 
       {/* Mobile Navigation (Initially Hidden, toggled via useState) */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white space-y-2">
+        <div className="lg:hidden bg-gray-100 space-y-2">
           <div className="justify-between text-center space-y-2">
           <Link href={'/Products'} className="text-black hover:text-blue-500  block">New & Featured</Link>
           <Link href={'/MenProduct'} className="text-black hover:text-blue-500 block">Men</Link>
